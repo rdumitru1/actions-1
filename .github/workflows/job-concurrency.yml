@@ -1,4 +1,4 @@
-name: Exploring Variables and Secrets
+name: Concurrency Demo
 
 on: push
 
