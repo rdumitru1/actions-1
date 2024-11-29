@@ -1,6 +1,7 @@
 name: Expressions
 
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
 
 env:
   CONTAINER_REGISTRY: docker.io
