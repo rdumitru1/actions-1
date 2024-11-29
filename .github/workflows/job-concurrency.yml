@@ -1,6 +1,6 @@
 name: Concurrency Demo
 
-on: push
+on: workflow_dispatch
 
 env:
   CONTAINER_REGISTRY: docker.io
@@ -22,6 +22,9 @@ jobs:
       
   deploy:
     needs: docker
+    concurrency:
+      group: production-deployment
+      cancel-in-progress: true
     runs-on: ubuntu-latest
     steps:
       - name: Docker Run
