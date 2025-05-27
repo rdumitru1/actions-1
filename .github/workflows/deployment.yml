@@ -26,6 +26,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-versions: '18'
+      - name: Install dependecies
+        run: npm ci
       - name: Test
         run: npm run test
   build:
@@ -38,5 +40,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-versions: '18'
+      - name: Install dependecies
+        run: npm ci
       - name: Build
         run: npm run build
