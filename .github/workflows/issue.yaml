@@ -1,5 +1,5 @@
 name: Handle issues
-on: push
+on: issues
 
 jobs:
   output-info:
