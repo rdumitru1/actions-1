@@ -18,6 +18,7 @@ jobs:
       - name: Run tests
         run: npm test
   deploy:
+    needs: test      # This makes the jobs run in Sequential. With needs you point to the identifier of another job that must finish before this job starts the execution.
     runs-on: ubuntu-latest
     steps:
       - name: Get code
