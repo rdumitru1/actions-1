@@ -1,0 +1,42 @@
+name: Deploy application
+
+on: push
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install node
+        uses: actions/setup-node@v4
+        with:
+          node-versions: '18'
+      - name: Install dependecies
+        run: npm ci
+      - name: Lint
+        run: npm lint
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install node
+        uses: actions/setup-node@v4
+        with:
+          node-versions: '18'
+      - name: Test
+        run: npm test
+  build:
+    needs: [lint,test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install node
+        uses: actions/setup-node@v4
+        with:
+          node-versions: '18'
+      - name: Build
+        run: npm build
