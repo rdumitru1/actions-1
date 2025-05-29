@@ -19,10 +19,8 @@ jobs:
         run: npm ci
       - name: Lint code
         run: |
-          cd /home/runner/work/actions-1/actions-1/src
-          npm init @eslint/config
           npm install eslint --save-dev
-          npm run lint
+          npx eslint
   test:
     runs-on: ubuntu-latest
     steps:
