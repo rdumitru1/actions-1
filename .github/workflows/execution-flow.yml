@@ -8,17 +8,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Cache dependencies
         id: cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.npm
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
         run: npm ci
       - name: Lint code
-        run: npm run lint
+        run: |
+          cd /home/runner/work/actions-1/actions-1/src
+          npm init @eslint/config
+          npm install eslint --save-dev
+          npm run lint
   test:
     runs-on: ubuntu-latest
     steps:
