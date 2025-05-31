@@ -2,7 +2,7 @@ name: Website Deployment
 on:
   push:
     branches:
-      - controlling-workflow-and-jobs-execution
+      - dev # - controlling-workflow-and-jobs-execution
 jobs:
   lint:
     runs-on: ubuntu-latest
