@@ -1,9 +1,9 @@
 name: Label Issues (Script Injection Example)
 on:
-  push:
   issues:
-    types:
-      - opened
+    types: [opened]
+permissions:
+  issues: write  # Required to modify issues
 jobs:
   assign-label:
     runs-on: ubuntu-latest
