@@ -8,11 +8,14 @@ jobs:
   assign-label:
     runs-on: ubuntu-latest
     steps:
-      - name: Assign label
+      - name: Check for "bug" keyword
+        env:
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
-          issue_title="${{ github.event.issue.title }}"
-          if [[ "$issue_title" == *"bug"* ]]; then
-          echo "Issue is about a bug!"
+          if [[ "$ISSUE_TITLE" == *"bug"* ]]; then
+            gh issue edit $ISSUE_NUMBER --add-label "bug"
+            echo "Added 'bug' label"
           else
-          echo "Issue is not about a bug"
+            echo "No action needed"
           fi
