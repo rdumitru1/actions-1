@@ -10,6 +10,7 @@ on:
         options:
           - deploy
           - destroy
+        default: deploy
 
 jobs:
   run-oc:
