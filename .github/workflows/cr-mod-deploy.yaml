@@ -1,0 +1,10 @@
+name: Modular Environment Deployment
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-oc:
+    uses: ./.github/workflows/cr-mod-template.yaml
+    with:
+      action: ${{ inputs.action }}
