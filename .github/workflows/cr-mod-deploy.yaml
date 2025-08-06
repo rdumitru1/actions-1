@@ -2,6 +2,14 @@ name: Modular Environment Deployment
 
 on:
   workflow_dispatch:
+    inputs:
+      action:
+        description: 'Action to perform'
+        required: true
+        type: string
+        options:
+          - deploy
+          - destroy
 
 jobs:
   run-oc:
