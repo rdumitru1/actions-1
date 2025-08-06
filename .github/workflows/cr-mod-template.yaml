@@ -7,9 +7,6 @@ on:
         description: 'Action to perform'
         required: true
         type: string
-        options:
-          - deploy
-          - destroy
 
 jobs:
   oc-cli:
