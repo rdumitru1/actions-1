@@ -18,11 +18,17 @@ jobs:
         shell: bash
 
     steps:
-      - name: Perform an ls
+      - name: Terraform plan
+        if: ${{ inputs.action == 'deploy' }}
         run: |
-          ls -l
+          echo "Running terraform plan"
 
-      - name: Perform ls -a
+      - name: Terraform apply
+        if: ${{ inputs.action == 'deploy' }}
+        run: |
+          echo "Running terraform apply"
+
+      - name: Terraform destoy
         if: ${{ inputs.action == 'destroy' }}
         run: |
-          ls -la
+          echo "Running terraform destroy"
