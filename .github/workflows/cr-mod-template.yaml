@@ -36,6 +36,7 @@ jobs:
         run: |
           echo "Running terraform destroy"
       - name: Echo Values
+        if: ${{ inputs.action == 'apply' }}
         run: |
           IFS=',' read -ra NAMESPACE_ARRAY <<< "${{ inputs.list_test }}"
           for ns in "${NAMESPACE_ARRAY[@]}"; do
