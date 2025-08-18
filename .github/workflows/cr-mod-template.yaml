@@ -7,6 +7,9 @@ on:
         description: 'Action to perform'
         required: true
         type: string
+      list_test:
+        required: true
+        type: string
 
 jobs:
   oc-cli:
@@ -32,3 +35,10 @@ jobs:
         if: ${{ inputs.action == 'destroy' }}
         run: |
           echo "Running terraform destroy"
+      - name: Echo Values
+        run: |
+          IFS=',' read -ra NAMESPACE_ARRAY <<< "${{ inputs.list_test }}"
+          for ns in "${NAMESPACE_ARRAY[@]}"; do
+            echo "Echo string: $ns"
+            echo "$ns"
+          done
