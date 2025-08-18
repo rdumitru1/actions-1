@@ -11,9 +11,14 @@ on:
           - deploy
           - destroy
         default: deploy
+      list_test:
+        description: 'Testing an array'
+        required: true
+        type: string
 
 jobs:
   run-oc:
     uses: ./.github/workflows/cr-mod-template.yaml
     with:
       action: ${{ inputs.action }}
+      list_test: ${{ inputs.list_test }}
