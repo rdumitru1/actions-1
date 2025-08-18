@@ -43,3 +43,7 @@ jobs:
             echo "Echo string: $ns"
             echo "$ns"
           done
+        - name: Check if jq is installed
+          if: ${{ inputs.action == 'deploy' }}
+          run: |
+            jq
